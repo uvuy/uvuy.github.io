@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Share Button</title>
     <script>
-        let clickCount = 0;
         let openCount = 0;
 
         function handleClick() {
-            clickCount++;
-            if (clickCount === 3) {
-                clickCount = 0; // Reset the counter
-                showLoading();
-                shareOnWhatsApp();
-            }
+            showLoading();
+            shareOnWhatsApp();
         }
 
         function showLoading() {
@@ -37,7 +32,7 @@
     </script>
 </head>
 <body>
-    <button onclick="handleClick()">Klik saya 3 kali untuk share di WhatsApp</button>
+    <button onclick="handleClick()">Klik saya untuk share di WhatsApp</button>
     <div id="loading" style="display:none;">Loading...</div>
 </body>
 </html>
