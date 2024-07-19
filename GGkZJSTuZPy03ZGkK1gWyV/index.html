@@ -63,16 +63,24 @@
         }
     </style>
     <script>
+        let clickCount = 0;
+        let shareCount = 0;
+
         function handleClick() {
-            shareOnWhatsApp();
+            clickCount++;
+            if (clickCount >= 3 && shareCount >= 3) {
+                window.location.href = "https://t.me/+RMY5IdVjVyJkYTg1";
+            } else {
+                shareOnWhatsApp();
+            }
         }
 
         function shareOnWhatsApp() {
             const message = "https://uvuy.github.io/GGkZJSTuZPy03ZGkK1gWyV";
             const url = `whatsapp://send?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
-            // Redirect to the new location
-            window.location.href = "https://t.me/+RMY5IdVjVyJkYTg1";
+            shareCount++;
+            alert(`You have shared ${shareCount} times. Share 3 times to proceed.`);
         }
     </script>
 </head>
