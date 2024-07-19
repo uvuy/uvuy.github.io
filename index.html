@@ -18,6 +18,7 @@
             text-align: center;
             line-height: 30px;
             color: white;
+            font-size: 18px;
         }
     </style>
     <script>
@@ -33,7 +34,10 @@
             const loadingBar = document.getElementById('loadingBar');
             const percentage = (openCount / 3) * 100;
             loadingBar.style.width = percentage + '%';
-            loadingBar.textContent = percentage + '%';
+            
+            // Convert percentage to a single digit (1, 2, or 3)
+            const digit = Math.ceil(percentage / 33.33); // 33.33 is roughly 100%/3
+            loadingBar.textContent = digit;
         }
 
         function shareOnWhatsApp() {
@@ -47,9 +51,9 @@
     </script>
 </head>
 <body>
-    <button onclick="handleClick()">Klik saya untuk share di kiw</button>
+    <button onclick="handleClick()">Klik saya untuk share di WhatsApp</button>
     <div id="loadingBarContainer">
-        <div id="loadingBar">0%</div>
+        <div id="loadingBar"> </div>
     </div>
 </body>
 </html>
