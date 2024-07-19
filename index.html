@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Share Button</title>
+    <script>
+        let clickCount = 0;
+        let openCount = 0;
+
+        function handleClick() {
+            clickCount++;
+            if (clickCount === 3) {
+                clickCount = 0; // Reset the counter
+                showLoading();
+                shareOnWhatsApp();
+            }
+        }
+
+        function showLoading() {
+            const loadingElement = document.getElementById('loading');
+            loadingElement.style.display = 'block';
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+            }, 2000); // Hide the loading message after 2 seconds
+        }
+
+        function shareOnWhatsApp() {
+            const message = "Ini adalah pesan yang ingin dibagikan melalui WhatsApp!";
+            const url = `whatsapp://send?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            openCount++;
+            if (openCount === 3) {
+                window.location.href = "https://www.google.com";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="handleClick()">Klik saya 3 kali untuk share di WhatsApp</button>
+    <div id="loading" style="display:none;">Loading...</div>
+</body>
+</html>
