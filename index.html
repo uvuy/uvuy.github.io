@@ -3,28 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Share Button</title>
+    <title>WhatsApp Share Button with Loading Bar</title>
+    <style>
+        #loadingBarContainer {
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+
+        #loadingBar {
+            width: 0%;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
     <script>
         let openCount = 0;
 
         function handleClick() {
-            showLoading();
+            showLoadingBar();
             shareOnWhatsApp();
         }
 
-        function showLoading() {
-            const loadingElement = document.getElementById('loading');
-            loadingElement.style.display = 'block';
-            setTimeout(() => {
-                loadingElement.style.display = 'none';
-            }, 2000); // Hide the loading message after 2 seconds
+        function showLoadingBar() {
+            openCount++;
+            const loadingBar = document.getElementById('loadingBar');
+            const percentage = (openCount / 3) * 100;
+            loadingBar.style.width = percentage + '%';
+            loadingBar.textContent = percentage + '%';
         }
 
         function shareOnWhatsApp() {
             const message = "Ini adalah pesan yang ingin dibagikan melalui WhatsApp!";
             const url = `whatsapp://send?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
-            openCount++;
             if (openCount === 3) {
                 window.location.href = "https://www.google.com";
             }
@@ -32,7 +47,9 @@
     </script>
 </head>
 <body>
-    <button onclick="handleClick()">Klik saya untuk share di WhatsApp</button>
-    <div id="loading" style="display:none;">Loading...</div>
+    <button onclick="handleClick()">Klik saya untuk share di kiw</button>
+    <div id="loadingBarContainer">
+        <div id="loadingBar">0%</div>
+    </div>
 </body>
 </html>
