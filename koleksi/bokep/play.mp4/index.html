@@ -47,6 +47,14 @@
         .invitation-container button:hover, .invitation-container a:hover {
             background-color: #1EBEA5;
         }
+        .share-count {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +63,7 @@
         <h1>Undangan Grup WhatsApp</h1>
         <p>Bergabunglah dengan grup WhatsApp kami untuk mendapatkan informasi terbaru dan diskusi yang menarik!</p>
         <button id="shareButton" onclick="shareToWhatsApp()">Bagikan</button>
+        <span id="shareCount" class="share-count">0/5</span>
         <a id="joinLink" href="https://chat.whatsapp.com/your-group-link" style="display:none;" target="_blank">Gabung Sekarang</a>
     </div>
 
@@ -68,13 +77,14 @@
             window.location.href = url;
 
             shareCount++;
+            document.getElementById('shareCount').innerText = shareCount + '/5';
 
             if (shareCount >= 5) {
                 document.getElementById('shareButton').style.display = 'none';
+                document.getElementById('shareCount').style.display = 'none';
                 document.getElementById('joinLink').style.display = 'inline-block';
             }
         }
     </script>
 </body>
-  </html>
-  
+</html>
