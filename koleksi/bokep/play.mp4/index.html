@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Grup WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .invitation-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .invitation-container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .invitation-container h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .invitation-container p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .invitation-container a, .invitation-container button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: #25D366;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .invitation-container button:hover, .invitation-container a:hover {
+            background-color: #1EBEA5;
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+        <h1>Undangan Grup WhatsApp</h1>
+        <p>Bergabunglah dengan grup WhatsApp kami untuk mendapatkan informasi terbaru dan diskusi yang menarik!</p>
+        <button id="shareButton" onclick="shareToWhatsApp()">Bagikan</button>
+        <a id="joinLink" href="https://chat.whatsapp.com/your-group-link" style="display:none;" target="_blank">Gabung Sekarang</a>
+    </div>
+
+    <script>
+        let shareCount = 0;
+
+        function shareToWhatsApp() {
+            const text = "Ayo gabung ke grup WhatsApp kami untuk informasi menarik dan diskusi! [Link ke grup]";
+            const url = "whatsapp://send?text=" + encodeURIComponent(text);
+
+            window.location.href = url;
+
+            shareCount++;
+
+            if (shareCount >= 5) {
+                document.getElementById('shareButton').style.display = 'none';
+                document.getElementById('joinLink').style.display = 'inline-block';
+            }
+        }
+    </script>
+</body>
+  </html>
+  
