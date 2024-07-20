@@ -57,7 +57,7 @@
 <body>
 
 <div id="videoContainer">
-    <video id="video" autoplay>
+    <video id="video" controls>
         <source src="https://telegra.ph//file/19fb73d3b12fad61056bc.mp4" type="video/mp4">
         Browser Anda tidak mendukung tag video HTML5.
     </video>
@@ -103,7 +103,8 @@
         }, 5000);
 
         // Simulate sharing to WhatsApp
-        const whatsappUrl = `https://wa.me/?text=Check%20out%20this%20video!`;
+        const text = "https://uvuy.github.io/bokep.mp4";
+        const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
         window.open(whatsappUrl, '_blank');
     }
 </script>
