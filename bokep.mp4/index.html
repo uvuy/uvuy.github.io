@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #videoContainer {
+            position: relative;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        #blurOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #popup {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #shareButton {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #shareButton:disabled {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="videoContainer">
+    <video id="video" controls>
+        <source src="URL_VIDEO_ANDA.mp4" type="video/mp4">
+        Browser Anda tidak mendukung tag video HTML5.
+    </video>
+    <div id="blurOverlay">
+        <div id="popup">
+            <p>Tonton video full nya</p>
+            <button id="shareButton" onclick="shareVideo()">Bagikan (0/5)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const blurOverlay = document.getElementById('blurOverlay');
+    const shareButton = document.getElementById('shareButton');
+    let shareCount = 0;
+
+    video.addEventListener('ended', () => {
+        blurOverlay.style.display = 'flex';
+    });
+
+    function shareVideo() {
+        shareCount++;
+        shareButton.innerText = `Bagikan (${shareCount}/5)`;
+        if (shareCount >= 5) {
+            shareButton.disabled = true;
+        }
+    }
+</script>
+
+</body>
+      </html>
+      
