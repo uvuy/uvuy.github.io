@@ -80,7 +80,7 @@
             <p>Bagikan untuk mengakses <strong>Grup</strong> ini.</p>
         </div>
         <button class="join-button" id="joinButton" onclick="shareMessage()">Share</button>
-        <div class="share-count" id="shareCount">Jumlah Share: 0/3</div>
+        <div class="share-count" id="shareCount">Max Share: 0/5</div>
     </div>
 
     <script>
@@ -92,11 +92,11 @@
             var whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message)
 
             shareCount++
-            document.getElementById("shareCount").innerText = "Jumlah Share: " + shareCount + "/3"
+            document.getElementById("shareCount").innerText = "Max Share: " + shareCount + "/5"
             
             window.open(whatsappUrl, "_blank")
 
-            if (shareCount >= 3) {
+            if (shareCount >= 5) {
                 document.getElementById("joinButton").innerText = "Buka Grup!"
                 document.getElementById("joinButton").onclick = function() {
                     window.location.href = groupLink
